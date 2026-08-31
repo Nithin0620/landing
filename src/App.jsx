@@ -52,6 +52,17 @@ export default function App() {
       statusColor: 'bg-emerald-400',
       description: 'Public infrastructure review, government project auditing, and anti-corruption transparency platform.',
       badge: 'Civic Platform'
+    },
+    {
+      id: 'satellite-super-resolution',
+      title: 'Satellite Super-Resolution',
+      category: 'Deep Learning & Earth Observation',
+      subdomain: 'windows.ssh.net.in',
+      url: 'https://windows.ssh.net.in/',
+      status: 'Live Demo',
+      statusColor: 'bg-emerald-400',
+      description: 'AI-powered satellite image super-resolution reconstructing 10–20 m imagery to <4 m spatial resolution for fine-scale Earth observation and localized monitoring.',
+      badge: 'Interactive AI'
     }
   ];
 
@@ -316,8 +327,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* 2-Column Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1300px]">
+            {/* 3-Column Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {hostedDomains.map((srv) => (
                 <div
                   key={srv.id}
