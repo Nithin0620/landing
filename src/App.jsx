@@ -43,6 +43,17 @@ export default function App() {
       badge: 'Primary Node'
     },
     {
+      id: 'bloggr',
+      title: 'Bloggr',
+      category: 'Publishing & Content Platform',
+      subdomain: 'bloggr.ssh.net.in',
+      url: 'https://bloggr.ssh.net.in',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Modern developer publishing platform with markdown rendering, edge distribution, rich reading experience, and custom domain routing.',
+      badge: 'Web Platform'
+    },
+    {
       id: 'infra-xray',
       title: 'Infra X-Ray',
       category: 'Civic Tech & Public Accountability',
@@ -327,8 +338,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* 3-Column Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* 2-Column Layout (2x2 Grid) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {hostedDomains.map((srv) => (
                 <div
                   key={srv.id}
