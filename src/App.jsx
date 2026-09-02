@@ -74,6 +74,17 @@ export default function App() {
       statusColor: 'bg-emerald-400',
       description: 'AI-powered satellite image super-resolution reconstructing 10–20 m imagery to <4 m spatial resolution for fine-scale Earth observation and localized monitoring.',
       badge: 'Interactive AI'
+    },
+    {
+      id: 'studynotion',
+      title: 'StudyNotion',
+      category: 'EdTech & E-Learning Platform',
+      subdomain: 'studynotion.ssh.net.in',
+      url: 'https://studynotion.ssh.net.in',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Comprehensive EdTech platform featuring interactive course management, student & instructor dashboards, video streaming, and secure payments.',
+      badge: 'EdTech Platform'
     }
   ];
 
@@ -338,13 +349,27 @@ export default function App() {
               </div>
             </div>
 
-            {/* 2-Column Layout (2x2 Grid) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {hostedDomains.map((srv) => (
-                <div
-                  key={srv.id}
-                  className="liquid-glass rounded-[32px] p-8 sm:p-10 flex flex-col justify-between hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group min-h-[300px]"
-                >
+            {/* Adaptive Grid Layout (Even rows of 2, odd count finishes with row of 3) */}
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
+              {hostedDomains.map((srv, index) => {
+                // Adaptive layout:
+                // If total is 5: first 2 items take col-span-3 (2 in row 1), last 3 take col-span-2 (3 in row 2)
+                const total = hostedDomains.length;
+                let spanClass = 'md:col-span-3';
+                if (total === 1) {
+                  spanClass = 'md:col-span-6';
+                } else if (total === 3 || total === 6) {
+                  spanClass = 'md:col-span-2';
+                } else if (total % 2 !== 0) {
+                  const splitPoint = total - 3;
+                  spanClass = index < splitPoint ? 'md:col-span-3' : 'md:col-span-2';
+                }
+
+                return (
+                  <div
+                    key={srv.id}
+                    className={`liquid-glass rounded-[32px] p-8 sm:p-10 flex flex-col justify-between hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group min-h-[300px] ${spanClass}`}
+                  >
                   <div>
                     <div className="flex items-center justify-between pb-6 border-b border-white/20">
                       <span className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-neon text-glow-neon font-bold tracking-wider">
@@ -384,7 +409,8 @@ export default function App() {
                     </a>
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
           </div>
         </section>
