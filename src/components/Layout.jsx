@@ -28,6 +28,41 @@ export default function Layout({ children }) {
     }
   }, []);
 
+  useEffect(() => {
+    let target = window.scrollY;
+    let current = target;
+    let raf = null;
+
+    const onWheel = (e) => {
+      e.preventDefault();
+      target = Math.min(
+        Math.max(0, target + e.deltaY),
+        document.documentElement.scrollHeight - window.innerHeight
+      );
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+
+    const tick = () => {
+      current += (target - current) * 0.09;
+      if (Math.abs(target - current) < 0.5) current = target;
+      window.scrollTo(0, current);
+      if (Math.abs(target - current) > 0.5) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = null;
+      }
+    };
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+    const onScroll = () => { if (!raf) current = target = window.scrollY; };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#010828] text-white selection:bg-neon selection:text-black">
       {/* FIXED PARALLAX BACKGROUND */}

@@ -57,6 +57,17 @@ const hostedDomains = [
       statusColor: 'bg-emerald-400',
       description: 'Comprehensive EdTech platform featuring interactive course management, student & instructor dashboards, video streaming, and secure payments.',
       badge: 'EdTech Platform'
+    },
+    {
+      id: 'workflow',
+      title: 'Workflow',
+      category: 'Project Management',
+      subdomain: 'workflow.ssh.net.in',
+      url: 'https://workflow.ssh.net.in',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Real-time engineering & project management platform for speed, clarity, and collaboration — Linear-speed UX, Jira issue tracking, multi-tenant workspaces, Kanban boards, RBAC, and analytics.',
+      badge: 'Project Mgmt'
     }
   ];
 
@@ -210,13 +221,12 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
+            {/* Card row layout: even count = 2 cards per row (col-span-3). Odd count = 2 cards per row until the last row, which gets 3 cards (col-span-2) to fill it out. */}
             {hostedDomains.map((srv, index) => {
               const total = hostedDomains.length;
               let spanClass = 'md:col-span-3';
               if (total === 1) {
                 spanClass = 'md:col-span-6';
-              } else if (total === 3 || total === 6) {
-                spanClass = 'md:col-span-2';
               } else if (total % 2 !== 0) {
                 const splitPoint = total - 3;
                 spanClass = index < splitPoint ? 'md:col-span-3' : 'md:col-span-2';
@@ -229,9 +239,14 @@ export default function Home() {
                 >
                   <div>
                     <div className="flex items-center justify-between pb-6 border-b border-white/20">
-                      <span className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-neon text-glow-neon font-bold tracking-wider">
+                      <a
+                        href={srv.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-neon text-glow-neon font-bold tracking-wider inline-block hover:bg-white/20"
+                      >
                         {srv.subdomain}
-                      </span>
+                      </a>
                       <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40">
                         <span className={`w-2 h-2 rounded-full ${srv.statusColor} animate-pulse`} />
                         <span className="font-mono text-[11px] text-emerald-300 uppercase tracking-wider font-bold">{srv.status}</span>
@@ -239,12 +254,22 @@ export default function Home() {
                     </div>
 
                     <div className="pt-7">
-                      <span className="font-mono text-xs uppercase tracking-widest text-neon text-glow-neon block mb-2 font-bold">
+                      <a
+                        href={srv.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono text-xs uppercase tracking-widest text-neon text-glow-neon block mb-2 font-bold hover:underline"
+                      >
                         {srv.category}
-                      </span>
-                      <h3 className="font-grotesk text-[28px] sm:text-[34px] uppercase text-white text-glow group-hover:text-neon transition-colors duration-200">
+                      </a>
+                      <a
+                        href={srv.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-grotesk text-[28px] sm:text-[34px] uppercase text-white text-glow group-hover:text-neon transition-colors duration-200 inline-block"
+                      >
                         {srv.title}
-                      </h3>
+                      </a>
                       <p className="font-mono text-[14px] sm:text-[15px] text-white/95 mt-3.5 leading-relaxed font-normal">
                         {srv.description}
                       </p>
