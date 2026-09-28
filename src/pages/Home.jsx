@@ -68,6 +68,17 @@ const hostedDomains = [
       statusColor: 'bg-emerald-400',
       description: 'Real-time engineering & project management platform for speed, clarity, and collaboration — Linear-speed UX, Jira issue tracking, multi-tenant workspaces, Kanban boards, RBAC, and analytics.',
       badge: 'Project Mgmt'
+    },
+    {
+      id: 'benchley',
+      title: 'Benchley',
+      category: 'Load Testing & Benchmarking Platform',
+      subdomain: 'benchley.ssh.net.in',
+      url: 'https://benchley.ssh.net.in/',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Developer-centric HTTP & API load testing platform powered by Grafana k6 with real-time SSE telemetry streams, automated capacity diagnostics, and side-by-side run comparisons.',
+      badge: 'Load Testing'
     }
   ];
 
@@ -172,9 +183,19 @@ export default function Home() {
               WORK.
             </h1>
 
-            <span className="font-condiment text-neon text-glow-neon absolute right-2 sm:right-12 md:right-24 bottom-[5.5rem] sm:bottom-[4.5rem] text-[28px] sm:text-[42px] md:text-[54px] lg:text-[62px] -rotate-2 mix-blend-exclusion opacity-95 pointer-events-none select-none">
+            <a
+              href="#domains"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('domains');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="font-condiment text-neon text-glow-neon absolute right-2 sm:right-12 md:right-24 bottom-[5.5rem] sm:bottom-[4.5rem] text-[28px] sm:text-[42px] md:text-[54px] lg:text-[62px] -rotate-2 mix-blend-exclusion opacity-95 hover:opacity-100 hover:scale-105 active:scale-95 transition-all duration-200 select-none cursor-pointer"
+            >
               ssh.net.in
-            </span>
+            </a>
 
             <p className="font-mono text-[14px] sm:text-[17px] text-white/90 mt-6 max-w-[520px] leading-relaxed">
               Websites, automation & custom software — built for your business.
@@ -242,15 +263,25 @@ export default function Home() {
                       <a
                         href={srv.url}
                         target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-neon text-glow-neon font-bold tracking-wider inline-block hover:bg-white/20"
+                        rel="noopener noreferrer"
+                        className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-neon text-glow-neon font-bold tracking-wider inline-flex items-center space-x-1.5 hover:bg-neon hover:text-[#010828] hover:border-neon hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group/btn"
+                        title={`Visit ${srv.subdomain}`}
                       >
-                        {srv.subdomain}
+                        <span>{srv.subdomain}</span>
+                        <svg className="w-3 h-3 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
                       </a>
-                      <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40">
+                      <a
+                        href={srv.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 hover:bg-emerald-500/30 transition-colors duration-200 cursor-pointer"
+                        title={`Status: ${srv.status}`}
+                      >
                         <span className={`w-2 h-2 rounded-full ${srv.statusColor} animate-pulse`} />
                         <span className="font-mono text-[11px] text-emerald-300 uppercase tracking-wider font-bold">{srv.status}</span>
-                      </div>
+                      </a>
                     </div>
 
                     <div className="pt-7">
