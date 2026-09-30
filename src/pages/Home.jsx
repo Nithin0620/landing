@@ -79,6 +79,28 @@ const hostedDomains = [
       statusColor: 'bg-emerald-400',
       description: 'Developer-centric HTTP & API load testing platform powered by Grafana k6 with real-time SSE telemetry streams, automated capacity diagnostics, and side-by-side run comparisons.',
       badge: 'Load Testing'
+    },
+    {
+      id: 'keyzen',
+      title: 'Keyzen',
+      category: 'Secret Management & Credential Vault',
+      subdomain: 'keyzen.ssh.net.in',
+      url: 'https://keyzen.ssh.net.in/',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Secure secret management and credential vault for developers, with encryption, access control, and audit trails.',
+      badge: 'Secret Management'
+    },
+    {
+      id: 'memolm',
+      title: 'MemoLM',
+      category: 'LLM Response Firewall & Semantic Cache Gateway',
+      subdomain: 'memolm.ssh.net.in',
+      url: 'https://memolm.ssh.net.in/',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'OpenAI-compatible LLM gateway with intelligent semantic caching, safety validation, and response reuse to reduce redundant API calls, latency, and LLM costs while maintaining reliable and fresh responses.',
+      badge: 'LLM Security'
     }
   ];
 
