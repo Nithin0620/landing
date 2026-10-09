@@ -124,6 +124,26 @@ export default function LiveCommandCenter() {
         </div>
       </div>
 
+      {/* Arrival Notification Ribbon */}
+      <div className="mt-4 px-3.5 py-2 rounded-xl bg-neon/[0.05] border border-neon/20 flex items-center justify-between gap-3 text-xs backdrop-blur-md">
+        <div className="flex items-center space-x-2.5 overflow-hidden">
+          <span className="flex h-2 w-2 relative flex-shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-neon" />
+          </span>
+          <span className="font-mono text-[11px] text-slate-300 truncate sm:overflow-visible">
+            <strong className="text-neon font-semibold">📡 Beacon Active:</strong> Your arrival was informed to Nithin's Telegram.
+          </span>
+        </div>
+        <button
+          onClick={handleWave}
+          disabled={hasWaved || isWaving}
+          className="text-[11px] font-mono text-neon hover:text-white underline transition-colors cursor-pointer flex-shrink-0"
+        >
+          {hasWaved ? '✓ Wave Sent' : 'Wave Back 👋'}
+        </button>
+      </div>
+
       {/* Main Focus / Current Task Section */}
       <div className="my-6">
         <div className="text-[11px] font-mono uppercase tracking-widest text-slate-400 mb-2 flex items-center space-x-2">
