@@ -1,0 +1,15 @@
+name = "landing-live-status"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+# Bind your KV Namespace
+# Run: wrangler kv:namespace create STATUS_KV
+# Then paste the returned id here:
+[[kv_namespaces]]
+binding = "STATUS_KV"
+id = "ac8e38d6a187408690a00b651cd84881"
+
+[vars]
+AUTH_SECRET = "hermes_secret_landing_2026"
+TELEGRAM_BOT_TOKEN = "8830250921:AAEdeHfpMRMWATTpCMo_vw4n1qhXLXg5vMA"
+TELEGRAM_CHAT_ID = "7855336071"

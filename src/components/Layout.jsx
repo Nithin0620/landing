@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MailIcon, LinkedInIcon, GithubIcon } from './Icons';
+import LiveStatusPill from './LiveStatusPill';
+import VisitorArrivalToast from './VisitorArrivalToast';
 
 export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -83,12 +85,15 @@ export default function Layout({ children }) {
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-10 lg:px-16 py-5">
         <div className="max-w-[1831px] mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2.5 group">
-            <span className="w-2.5 h-2.5 rounded-full bg-neon animate-pulse" />
-            <span className="font-grotesk text-[18px] sm:text-[20px] uppercase tracking-wider text-white text-glow group-hover:text-neon transition-colors duration-200">
-              ssh.net.in
-            </span>
-          </Link>
+          <div className="flex items-center space-x-4">
+            <Link to="/" className="flex items-center space-x-2.5 group">
+              <span className="w-2.5 h-2.5 rounded-full bg-neon animate-pulse" />
+              <span className="font-grotesk text-[18px] sm:text-[20px] uppercase tracking-wider text-white text-glow group-hover:text-neon transition-colors duration-200">
+                ssh.net.in
+              </span>
+            </Link>
+            <LiveStatusPill />
+          </div>
 
           <nav className="hidden lg:block liquid-glass rounded-[28px] px-[48px] py-[20px]">
             <ul className="flex items-center space-x-10">
@@ -235,6 +240,9 @@ export default function Layout({ children }) {
           </div>
         </div>
       </footer>
+
+      {/* Global Arrival Alert Toast */}
+      <VisitorArrivalToast />
     </div>
   );
 }

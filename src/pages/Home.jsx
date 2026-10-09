@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRightIcon, MailIcon, GithubIcon, LinkedInIcon } from '../components/Icons';
+import LiveCommandCenter from '../components/LiveCommandCenter';
 
 const hostedDomains = [
     {
@@ -242,6 +243,11 @@ export default function Home() {
         </div>
 
         <div className="h-6 sm:h-10" />
+      </section>
+
+      {/* LIVE DEVELOPER & AGENT COMMAND CENTER */}
+      <section className="relative w-full px-6 sm:px-10 lg:px-16 -mt-16 sm:-mt-24 z-20">
+        <LiveCommandCenter />
       </section>
 
       {/* HOSTED DOMAINS */}
