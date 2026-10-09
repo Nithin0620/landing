@@ -30,7 +30,10 @@ const FALLBACK_STATUS = {
   waves_count: 12,
 };
 
-const API_BASE_URL = import.meta.env.VITE_STATUS_API_URL || '';
+const rawBaseUrl = (import.meta.env.VITE_STATUS_API_URL || '').trim();
+const API_BASE_URL = rawBaseUrl && !/^https?:\/\//i.test(rawBaseUrl)
+  ? `https://${rawBaseUrl}`
+  : rawBaseUrl;
 
 export async function fetchLiveStatus() {
   if (!API_BASE_URL) {
