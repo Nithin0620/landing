@@ -102,6 +102,17 @@ const hostedDomains = [
       statusColor: 'bg-emerald-400',
       description: 'OpenAI-compatible LLM gateway with intelligent semantic caching, safety validation, and response reuse to reduce redundant API calls, latency, and LLM costs while maintaining reliable and fresh responses.',
       badge: 'LLM Security'
+    },
+    {
+      id: 'issuepilot',
+      title: 'IssuePilot',
+      category: 'AI Issue Triage & Policy Engine',
+      subdomain: 'issuepilot.ssh.net.in',
+      url: 'https://issuepilot.ssh.net.in/',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Autonomous GitHub issue triage system with calibrated safety gates, 2-way label sync, split-pane human review inbox, and Jev 1.13 structured decision models.',
+      badge: 'AI Triage Engine'
     }
   ];
 
