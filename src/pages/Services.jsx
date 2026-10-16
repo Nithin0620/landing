@@ -57,7 +57,7 @@ export default function Services() {
             {services.map((svc) => (
               <div
                 key={svc.title}
-                className="liquid-glass rounded-[32px] p-8 sm:p-10 hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group"
+                className="glass-card specular-sweep rounded-[32px] p-8 sm:p-10 hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group"
               >
                 <div className="flex items-start justify-between mb-6">
                   <span className="text-4xl">{svc.icon}</span>
@@ -97,7 +97,7 @@ export default function Services() {
               { step: '03', title: 'I build it', desc: 'Development, testing and deployment. You get updates along the way.' },
               { step: '04', title: 'You get the solution', desc: 'With documentation and support as agreed.' },
             ].map((item) => (
-              <div key={item.step} className="liquid-glass rounded-[24px] p-7">
+              <div key={item.step} className="glass-card specular-sweep rounded-[24px] p-7">
                 <span className="font-grotesk text-[48px] text-neon text-glow-neon opacity-40">{item.step}</span>
                 <h4 className="font-grotesk text-[18px] uppercase text-white text-glow mt-2 mb-3">{item.title}</h4>
                 <p className="font-mono text-[13px] text-white/60 leading-relaxed">{item.desc}</p>
@@ -118,7 +118,7 @@ export default function Services() {
           </p>
           <Link
             to="/start"
-            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
+            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider metallic-button text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
           >
             Start a Project →
           </Link>

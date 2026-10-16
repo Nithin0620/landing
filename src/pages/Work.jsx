@@ -81,7 +81,7 @@ export default function Work() {
             {projects.map((proj) => (
               <div
                 key={proj.title}
-                className="liquid-glass rounded-[32px] p-7 sm:p-8 hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group flex flex-col justify-between min-h-[340px]"
+                className="glass-card specular-sweep rounded-[32px] p-7 sm:p-8 hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group flex flex-col justify-between min-h-[340px]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -153,7 +153,7 @@ export default function Work() {
           </p>
           <Link
             to="/start"
-            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
+            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider metallic-button text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
           >
             Start a Project →
           </Link>

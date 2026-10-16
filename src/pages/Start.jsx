@@ -159,7 +159,7 @@ export default function Start() {
         <div className="w-full max-w-[1831px] mx-auto px-6 sm:px-10 lg:px-16">
           <div className="max-w-[680px]">
             {status === 'sent' ? (
-              <div className="liquid-glass rounded-[32px] p-10 sm:p-14 text-center">
+              <div className="glass-card specular-sweep rounded-[32px] p-10 sm:p-14 text-center">
                 <span className="text-5xl mb-6 block">✓</span>
                 <h3 className="font-grotesk text-[28px] sm:text-[34px] uppercase text-white text-glow mb-4">
                   MESSAGE SENT
@@ -169,7 +169,7 @@ export default function Start() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="liquid-glass rounded-[32px] p-8 sm:p-10 space-y-6">
+              <form onSubmit={handleSubmit} className="glass-card specular-sweep rounded-[32px] p-8 sm:p-10 space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-2">Name *</label>
@@ -254,7 +254,7 @@ export default function Start() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full rounded-[16px] px-8 py-4 font-grotesk text-[15px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-[16px] px-8 py-4 font-grotesk text-[15px] uppercase tracking-wider metallic-button text-black hover:bg-white transition-colors duration-200 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'sending' ? 'SENDING...' : 'SEND MESSAGE →'}
                 </button>

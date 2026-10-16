@@ -39,7 +39,7 @@ export default function LiveStatusPill() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md hover:border-neon/40 hover:bg-white/[0.08] transition-all duration-200 cursor-pointer">
+      <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full metallic-badge backdrop-blur-md hover:border-neon/40 hover:bg-white/[0.08] transition-all duration-200 cursor-pointer">
         <span className="relative flex h-2 w-2">
           {isActive && (
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -53,7 +53,7 @@ export default function LiveStatusPill() {
 
       {/* Tooltip on Hover */}
       {isHovered && (
-        <div className="absolute top-full right-0 mt-2 w-64 p-3 rounded-xl bg-[#030c2c]/95 border border-white/10 shadow-2xl backdrop-blur-xl z-50 animate-fadeIn pointer-events-none">
+        <div className="absolute top-full right-0 mt-2 w-64 p-3 rounded-xl glass-card specular-sweep shadow-2xl backdrop-blur-xl z-50 animate-fadeIn pointer-events-none">
           <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-white/5">
             <span className="text-[10px] font-mono text-neon uppercase tracking-wider">
               {status.category || 'Focus'}
