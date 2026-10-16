@@ -118,7 +118,7 @@ export default function Services() {
           </p>
           <Link
             to="/start"
-            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold"
+            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
           >
             Start a Project →
           </Link>

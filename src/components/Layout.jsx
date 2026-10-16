@@ -112,7 +112,7 @@ export default function Layout({ children }) {
               <li>
                 <Link
                   to="/start"
-                  className="font-grotesk text-[13px] uppercase tracking-wider px-5 py-2 rounded-full bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold"
+                  className="font-grotesk text-[13px] uppercase tracking-wider px-5 py-2 rounded-full bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
                 >
                   Start a Project
                 </Link>
@@ -123,7 +123,7 @@ export default function Layout({ children }) {
           <div className="hidden lg:flex flex-col space-y-3">
             <a
               href="mailto:nithin@ssh.net.in"
-              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200"
+              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="Email"
             >
               <MailIcon className="w-5 h-5" />
@@ -132,7 +132,7 @@ export default function Layout({ children }) {
               href="https://github.com/Nithin0620"
               target="_blank"
               rel="noreferrer"
-              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200"
+              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="GitHub"
             >
               <GithubIcon className="w-5 h-5" />
@@ -141,7 +141,7 @@ export default function Layout({ children }) {
               href="https://www.linkedin.com/in/k-s-nithin/"
               target="_blank"
               rel="noreferrer"
-              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200"
+              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="LinkedIn"
             >
               <LinkedInIcon className="w-5 h-5" />
@@ -213,17 +213,17 @@ export default function Layout({ children }) {
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Navigate</span>
                 <div className="flex flex-col space-y-2">
-                  <Link to="/services" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors">Services</Link>
-                  <Link to="/work" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors">Work</Link>
-                  <Link to="/about" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors">About</Link>
+                  <Link to="/services" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">Services</Link>
+                  <Link to="/work" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">Work</Link>
+                  <Link to="/about" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">About</Link>
                 </div>
               </div>
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Connect</span>
                 <div className="flex flex-col space-y-2">
-                  <a href="mailto:nithin@ssh.net.in" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors">Email</a>
-                  <a href="https://github.com/Nithin0620" target="_blank" rel="noreferrer" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors">GitHub</a>
-                  <a href="https://www.linkedin.com/in/k-s-nithin/" target="_blank" rel="noreferrer" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors">LinkedIn</a>
+                  <a href="mailto:nithin@ssh.net.in" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">Email</a>
+                  <a href="https://github.com/Nithin0620" target="_blank" rel="noreferrer" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">GitHub</a>
+                  <a href="https://www.linkedin.com/in/k-s-nithin/" target="_blank" rel="noreferrer" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">LinkedIn</a>
                 </div>
               </div>
             </div>
