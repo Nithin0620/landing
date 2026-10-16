@@ -61,14 +61,14 @@ export default function VisitorArrivalToast() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative overflow-hidden rounded-2xl bg-[#020721]/95 border border-neon/40 p-4 sm:p-5 shadow-[0_8px_32px_rgba(0,0,0,0.8),0_0_24px_rgba(111,255,0,0.2)] backdrop-blur-2xl">
+      <div className="relative overflow-hidden rounded-2xl glass-card specular-sweep border border-neon/50 p-4 sm:p-5 shadow-[0_8px_32px_rgba(0,0,0,0.8),0_0_24px_rgba(111,255,0,0.2)] backdrop-blur-2xl">
         {/* Glow accent in corner */}
         <div className="absolute -top-12 -right-12 w-28 h-28 bg-neon/20 rounded-full blur-2xl pointer-events-none" />
 
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-start space-x-3.5">
             {/* Pulsing Satellite / Radar Icon */}
-            <div className="relative mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-neon/10 border border-neon/30 text-neon flex-shrink-0 shadow-[0_0_12px_rgba(111,255,0,0.3)]">
+            <div className="relative mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl metallic-badge text-neon flex-shrink-0 shadow-[0_0_12px_rgba(111,255,0,0.3)]">
               <span className="text-base">📡</span>
               <span className="absolute -top-1 -right-1 flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-80" />

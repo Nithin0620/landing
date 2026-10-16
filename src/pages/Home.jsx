@@ -408,14 +408,14 @@ export default function Home() {
             {projects.map((proj) => (
               <div
                 key={proj.id}
-                className="liquid-glass rounded-[32px] p-7 sm:p-8 hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group flex flex-col justify-between"
+                className="glass-card specular-sweep rounded-[32px] p-7 sm:p-8 transition-all duration-300 group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-xs text-neon text-glow-neon uppercase tracking-wider font-bold">
                       {proj.category}
                     </span>
-                    <span className="font-mono text-[11px] px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white font-semibold">
+                    <span className="font-mono text-[11px] px-3 py-1 rounded-full metallic-badge text-white font-semibold">
                       {proj.badge}
                     </span>
                   </div>

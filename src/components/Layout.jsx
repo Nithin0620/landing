@@ -88,21 +88,21 @@ export default function Layout({ children }) {
           <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center space-x-2.5 group">
               <span className="w-2.5 h-2.5 rounded-full bg-neon animate-pulse" />
-              <span className="font-grotesk text-[18px] sm:text-[20px] uppercase tracking-wider text-white text-glow group-hover:text-neon transition-colors duration-200">
+              <span className="font-grotesk text-[18px] sm:text-[20px] uppercase tracking-wider text-white metallic-text text-glow group-hover:text-neon transition-colors duration-200">
                 ssh.net.in
               </span>
             </Link>
             <LiveStatusPill />
           </div>
 
-          <nav className="hidden lg:block liquid-glass rounded-[28px] px-[48px] py-[20px]">
+          <nav className="hidden lg:block glass-card specular-sweep rounded-[28px] px-[48px] py-[20px]">
             <ul className="flex items-center space-x-10">
               {navLinks.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.path}
                     className={`font-grotesk text-[13px] uppercase tracking-wider transition-colors duration-200 ${
-                      location.pathname === item.path ? 'text-neon text-glow-neon' : 'text-white hover:text-neon'
+                      location.pathname === item.path ? 'text-neon metallic-text text-glow-neon' : 'text-white hover:text-neon'
                     }`}
                   >
                     {item.name}
@@ -112,7 +112,7 @@ export default function Layout({ children }) {
               <li>
                 <Link
                   to="/start"
-                  className="font-grotesk text-[13px] uppercase tracking-wider px-5 py-2 rounded-full bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
+                  className="font-grotesk text-[13px] uppercase tracking-wider px-5 py-2 rounded-full metallic-button font-bold cursor-pointer inline-block"
                 >
                   Start a Project
                 </Link>
@@ -123,7 +123,7 @@ export default function Layout({ children }) {
           <div className="hidden lg:flex flex-col space-y-3">
             <a
               href="mailto:nithin@ssh.net.in"
-              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
+              className="glass-card specular-sweep w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="Email"
             >
               <MailIcon className="w-5 h-5" />
@@ -132,7 +132,7 @@ export default function Layout({ children }) {
               href="https://github.com/Nithin0620"
               target="_blank"
               rel="noreferrer"
-              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
+              className="glass-card specular-sweep w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="GitHub"
             >
               <GithubIcon className="w-5 h-5" />
@@ -141,7 +141,7 @@ export default function Layout({ children }) {
               href="https://www.linkedin.com/in/k-s-nithin/"
               target="_blank"
               rel="noreferrer"
-              className="liquid-glass w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
+              className="glass-card specular-sweep w-[56px] h-[56px] rounded-[1rem] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="LinkedIn"
             >
               <LinkedInIcon className="w-5 h-5" />
@@ -151,7 +151,7 @@ export default function Layout({ children }) {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden liquid-glass w-[52px] h-[52px] rounded-[1rem] flex items-center justify-center text-white"
+            className="lg:hidden glass-card w-[52px] h-[52px] rounded-[1rem] flex items-center justify-center text-white"
             aria-label="Menu"
           >
             <div className="flex flex-col space-y-1.5">
@@ -164,13 +164,13 @@ export default function Layout({ children }) {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="lg:hidden liquid-glass rounded-[24px] mt-4 p-6 flex flex-col space-y-4">
+          <div className="lg:hidden glass-card rounded-[24px] mt-4 p-6 flex flex-col space-y-4">
             {navLinks.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 className={`font-grotesk text-[15px] uppercase tracking-wider py-2 ${
-                  location.pathname === item.path ? 'text-neon text-glow-neon' : 'text-white'
+                  location.pathname === item.path ? 'text-neon metallic-text text-glow-neon' : 'text-white'
                 }`}
               >
                 {item.name}
@@ -178,7 +178,7 @@ export default function Layout({ children }) {
             ))}
             <Link
               to="/start"
-              className="font-grotesk text-[15px] uppercase tracking-wider py-2 text-neon text-glow-neon font-semibold"
+              className="font-grotesk text-[15px] uppercase tracking-wider py-2 text-neon metallic-text text-glow-neon font-semibold"
             >
               Start a Project
             </Link>
@@ -201,7 +201,7 @@ export default function Layout({ children }) {
             <div>
               <Link to="/" className="flex items-center space-x-2.5 mb-4">
                 <span className="w-2 h-2 rounded-full bg-neon" />
-                <span className="font-grotesk text-[16px] uppercase tracking-wider text-white text-glow">ssh.net.in</span>
+                <span className="font-grotesk text-[16px] uppercase tracking-wider text-white metallic-text text-glow">ssh.net.in</span>
               </Link>
               <p className="font-mono text-[13px] text-white/60 max-w-[320px] leading-relaxed">
                 Web · Automation · Cloud · Software<br />
@@ -211,7 +211,7 @@ export default function Layout({ children }) {
 
             <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Navigate</span>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-neon metallic-text text-glow-neon font-bold block mb-3">Navigate</span>
                 <div className="flex flex-col space-y-2">
                   <Link to="/services" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">Services</Link>
                   <Link to="/work" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">Work</Link>
@@ -219,7 +219,7 @@ export default function Layout({ children }) {
                 </div>
               </div>
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Connect</span>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-neon metallic-text text-glow-neon font-bold block mb-3">Connect</span>
                 <div className="flex flex-col space-y-2">
                   <a href="mailto:nithin@ssh.net.in" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">Email</a>
                   <a href="https://github.com/Nithin0620" target="_blank" rel="noreferrer" className="font-mono text-[13px] text-white/70 hover:text-neon transition-colors cursor-pointer">GitHub</a>

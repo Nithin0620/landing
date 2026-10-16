@@ -43,7 +43,7 @@ export default function About() {
             </div>
 
             <div className="space-y-6">
-              <div className="liquid-glass rounded-[24px] p-7">
+              <div className="glass-card specular-sweep rounded-[24px] p-7">
                 <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Stack</span>
                 <div className="flex flex-wrap gap-2">
                   {['React', 'Node.js', 'Python', 'Go', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'Tailwind', 'FastAPI'].map((t) => (
@@ -54,7 +54,7 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="liquid-glass rounded-[24px] p-7">
+              <div className="glass-card specular-sweep rounded-[24px] p-7">
                 <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Connect</span>
                 <div className="flex flex-col space-y-3">
                   <a href="mailto:nithin@ssh.net.in" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors cursor-pointer">nithin@ssh.net.in</a>
@@ -75,7 +75,7 @@ export default function About() {
           </h2>
           <Link
             to="/start"
-            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
+            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider metallic-button text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
           >
             Start a Project →
           </Link>

@@ -79,7 +79,7 @@ export default function LiveCommandCenter() {
   const relativeTime = timeDiffMins <= 1 ? 'Just now' : `${timeDiffMins}m ago`;
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-8 p-6 sm:p-8 rounded-3xl liquid-glass border border-white/10 shadow-2xl relative overflow-hidden group">
+    <div className="w-full max-w-4xl mx-auto my-8 p-6 sm:p-8 rounded-3xl glass-card specular-sweep border border-white/15 shadow-2xl relative overflow-hidden group">
       {/* Subtle background glow effect */}
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-neon/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -106,7 +106,7 @@ export default function LiveCommandCenter() {
               <span className="font-grotesk text-sm font-semibold tracking-wider uppercase text-white">
                 Live Developer Pulse
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-neon border border-neon/20">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full metallic-badge text-neon">
                 {status.agent?.name || 'Hermes'} Online
               </span>
             </div>
@@ -118,14 +118,14 @@ export default function LiveCommandCenter() {
             <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
             <span>Synced: {relativeTime}</span>
           </span>
-          <span className="hidden sm:inline-block px-2.5 py-1 rounded-lg bg-white/5 border border-white/5 text-[11px] text-slate-300">
+          <span className="hidden sm:inline-block px-2.5 py-1 rounded-lg metallic-badge text-[11px] text-slate-300">
             Model: {status.agent?.model || 'Hermes 3'}
           </span>
         </div>
       </div>
 
       {/* Arrival Notification Ribbon */}
-      <div className="mt-4 px-3.5 py-2 rounded-xl bg-neon/[0.05] border border-neon/20 flex items-center justify-between gap-3 text-xs backdrop-blur-md">
+      <div className="mt-4 px-3.5 py-2 rounded-xl metallic-badge border border-neon/30 flex items-center justify-between gap-3 text-xs backdrop-blur-md">
         <div className="flex items-center space-x-2.5 overflow-hidden">
           <span className="flex h-2 w-2 relative flex-shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75" />
@@ -159,7 +159,7 @@ export default function LiveCommandCenter() {
       {/* Hardware Telemetry & Sparkline Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
         {/* CPU + Sparkline */}
-        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all">
+        <div className="p-4 rounded-2xl glass-card hover:border-white/15 transition-all">
           <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1">
             <span>CPU LOAD</span>
             <span className="text-neon font-semibold">{status.hardware?.cpu_percent}%</span>
@@ -185,7 +185,7 @@ export default function LiveCommandCenter() {
         </div>
 
         {/* RAM Usage */}
-        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all flex flex-col justify-between">
+        <div className="p-4 rounded-2xl glass-card hover:border-white/15 transition-all flex flex-col justify-between">
           <div className="text-[11px] font-mono text-slate-400 mb-1">MEMORY</div>
           <div className="font-grotesk text-lg font-bold text-white">
             {status.hardware?.ram_used_gb}{' '}
@@ -207,7 +207,7 @@ export default function LiveCommandCenter() {
         </div>
 
         {/* Battery & Power */}
-        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all flex flex-col justify-between">
+        <div className="p-4 rounded-2xl glass-card hover:border-white/15 transition-all flex flex-col justify-between">
           <div className="text-[11px] font-mono text-slate-400 mb-1">POWER STATUS</div>
           <div className="font-grotesk text-lg font-bold text-white flex items-center space-x-1.5">
             <span>{status.hardware?.battery}%</span>
@@ -223,7 +223,7 @@ export default function LiveCommandCenter() {
         </div>
 
         {/* System Uptime */}
-        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all flex flex-col justify-between">
+        <div className="p-4 rounded-2xl glass-card hover:border-white/15 transition-all flex flex-col justify-between">
           <div className="text-[11px] font-mono text-slate-400 mb-1">UPTIME</div>
           <div className="font-grotesk text-lg font-bold text-white">
             {status.hardware?.uptime || 'Active'}
@@ -235,13 +235,13 @@ export default function LiveCommandCenter() {
       {/* Footer: Workspace Context & Wave Button */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-white/10 text-xs">
         <div className="flex flex-wrap items-center gap-3 font-mono text-slate-300">
-          <span className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/5 border border-white/5">
+          <span className="flex items-center space-x-1.5 px-3 py-1 rounded-lg metallic-badge">
             <span>📁</span>
             <span>{status.context?.project || 'landing'}</span>
             <span className="text-slate-500">({status.context?.branch || 'master'})</span>
           </span>
           {status.context?.music && (
-            <span className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/5 border border-white/5 text-slate-300">
+            <span className="flex items-center space-x-1.5 px-3 py-1 rounded-lg metallic-badge text-slate-300">
               <span>🎧</span>
               <span className="truncate max-w-[180px]">{status.context.music}</span>
             </span>

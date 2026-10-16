@@ -5,26 +5,116 @@
 @layer base {
   button,
   a,
-  [role="button"] {
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  select {
     cursor: pointer;
   }
 }
 
-
 @layer utilities {
+  /* Ultra Frosted Glassmorphism */
   .liquid-glass {
     background: rgba(1, 8, 40, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
     position: relative;
     overflow: hidden;
   }
 
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(1, 8, 40, 0.65) 100%);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(111, 255, 0, 0.4);
+    box-shadow: 0 16px 48px 0 rgba(111, 255, 0, 0.15), inset 0 1px 2px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Metallic Visual Effects */
+  .metallic-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(180, 190, 210, 0.05) 50%, rgba(1, 8, 40, 0.75) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05), rgba(111, 255, 0, 0.3)) 1;
+    position: relative;
+  }
+
+  .metallic-button {
+    background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #64748b 100%);
+    color: #010828;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metallic-button:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+    box-shadow: 0 6px 28px rgba(111, 255, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+  }
+
+  .metallic-text {
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 40%, #94a3b8 70%, #f8fafc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .metallic-badge {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Shimmer specular light sweep */
+  .specular-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .specular-sweep::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      60deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.12) 48%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.12) 52%,
+      transparent 70%
+    );
+    transform: translateX(-100%) rotate(25deg);
+    transition: transform 0.8s ease-in-out;
+    pointer-events: none;
+  }
+
+  .specular-sweep:hover::after {
+    transform: translateX(100%) rotate(25deg);
+  }
+
   .text-glow {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   }
 
   .text-glow-neon {
-    text-shadow: 0 0 10px rgba(111, 255, 0, 0.6);
+    text-shadow: 0 0 14px rgba(111, 255, 0, 0.7);
   }
 }
 
@@ -43,7 +133,7 @@
   animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Force hardware accelerated zero-jank scrolling */
+/* Hardware accelerated smooth scroll */
 * {
   -webkit-font-smoothing: antialiased;
 }
