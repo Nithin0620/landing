@@ -94,7 +94,7 @@ export default function VisitorArrivalToast() {
           {/* Dismiss '✕' button */}
           <button
             onClick={() => setVisible(false)}
-            className="text-slate-400 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/10 flex-shrink-0"
+            className="text-slate-400 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/10 flex-shrink-0 cursor-pointer"
             aria-label="Dismiss notification"
           >
             ✕

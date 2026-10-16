@@ -114,7 +114,7 @@ export default function Work() {
                         href={proj.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="liquid-glass w-[42px] h-[42px] rounded-full flex items-center justify-center hover:border-white/40 transition-colors text-white"
+                        className="liquid-glass w-[42px] h-[42px] rounded-full flex items-center justify-center hover:border-white/40 transition-colors text-white cursor-pointer"
                         aria-label={`GitHub for ${proj.title}`}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -128,7 +128,7 @@ export default function Work() {
                         href={proj.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-[42px] h-[42px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white"
+                        className="w-[42px] h-[42px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white cursor-pointer"
                         aria-label={`Open ${proj.title}`}
                       >
                         <ChevronRightIcon className="w-5 h-5 stroke-[2.5]" />
@@ -153,7 +153,7 @@ export default function Work() {
           </p>
           <Link
             to="/start"
-            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold"
+            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
           >
             Start a Project →
           </Link>
