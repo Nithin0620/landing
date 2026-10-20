@@ -128,13 +128,13 @@ const hostedDomains = [
     {
       id: 'issuepilot',
       title: 'IssuePilot',
-      category: 'AI Issue Triage & GitHub Automation',
+      category: 'AI Issue Triage & Policy Engine',
       subdomain: 'issuepilot.ssh.net.in',
-      url: 'https://issuepilot.ssh.net.in',
+      url: 'https://issuepilot.ssh.net.in/',
       status: 'Online',
       statusColor: 'bg-emerald-400',
-      description: 'Structured AI GitHub issue triage platform automating classification, severity scoring, and escalation gates with calibrated confidence and webhook label sync.',
-      badge: 'DevOps & AI'
+      description: 'Autonomous GitHub issue triage system with calibrated safety gates, 2-way label sync, split-pane human review inbox, and Jev 1.13 structured decision models.',
+      badge: 'AI Triage Engine'
     }
   ];
 
@@ -261,13 +261,13 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-[520px]">
               <Link
                 to="/services"
-                className="liquid-glass rounded-[16px] px-7 py-4 flex items-center justify-center font-grotesk text-[14px] uppercase tracking-wider text-white hover:bg-neon hover:text-black transition-colors duration-200 whitespace-nowrap font-semibold border border-white/20 hover:border-neon"
+                className="liquid-glass rounded-[16px] px-7 py-4 flex items-center justify-center font-grotesk text-[14px] uppercase tracking-wider text-white hover:bg-neon hover:text-black transition-colors duration-200 whitespace-nowrap font-semibold border border-white/20 hover:border-neon cursor-pointer"
               >
                 View Services
               </Link>
               <Link
                 to="/start"
-                className="rounded-[16px] px-7 py-4 flex items-center justify-center font-grotesk text-[14px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 whitespace-nowrap font-semibold"
+                className="rounded-[16px] px-7 py-4 flex items-center justify-center font-grotesk text-[14px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 whitespace-nowrap font-semibold cursor-pointer"
               >
                 Start a Project →
               </Link>
@@ -376,7 +376,7 @@ export default function Home() {
                       href={srv.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="w-[50px] h-[50px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white"
+                      className="w-[50px] h-[50px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white cursor-pointer"
                       aria-label={`Open ${srv.title}`}
                     >
                       <ChevronRightIcon className="w-5 h-5 stroke-[2.5]" />
@@ -470,7 +470,7 @@ export default function Home() {
                     href={proj.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-[42px] h-[42px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white"
+                    className="w-[42px] h-[42px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white cursor-pointer"
                     aria-label={`Open repository for ${proj.title}`}
                   >
                     <ChevronRightIcon className="w-5 h-5 stroke-[2.5]" />
@@ -515,7 +515,7 @@ export default function Home() {
           <div className="liquid-glass rounded-[0.5rem] sm:rounded-[0.875rem] lg:rounded-[1.25rem] flex flex-col overflow-hidden border border-white/20">
             <a
               href="mailto:nithin@ssh.net.in"
-              className="w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[36px] sm:h-[48px] md:h-[52px] lg:h-[56px] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 border-b border-white/20"
+              className="w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[36px] sm:h-[48px] md:h-[52px] lg:h-[56px] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 border-b border-white/20 cursor-pointer"
               aria-label="Email"
             >
               <MailIcon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -524,7 +524,7 @@ export default function Home() {
               href="https://github.com/Nithin0620"
               target="_blank"
               rel="noreferrer"
-              className="w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[36px] sm:h-[48px] md:h-[52px] lg:h-[56px] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 border-b border-white/20"
+              className="w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[36px] sm:h-[48px] md:h-[52px] lg:h-[56px] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 border-b border-white/20 cursor-pointer"
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -533,7 +533,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/k-s-nithin/"
               target="_blank"
               rel="noreferrer"
-              className="w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[36px] sm:h-[48px] md:h-[52px] lg:h-[56px] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200"
+              className="w-[14vw] sm:w-[14.375rem] md:w-[10.78125rem] lg:w-[16.77rem] h-[36px] sm:h-[48px] md:h-[52px] lg:h-[56px] flex items-center justify-center text-white hover:bg-white/20 hover:text-neon transition-colors duration-200 cursor-pointer"
               aria-label="LinkedIn"
             >
               <LinkedInIcon className="w-5 h-5" />

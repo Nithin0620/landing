@@ -57,9 +57,9 @@ export default function About() {
               <div className="liquid-glass rounded-[24px] p-7">
                 <span className="font-mono text-[11px] uppercase tracking-widest text-neon text-glow-neon font-bold block mb-3">Connect</span>
                 <div className="flex flex-col space-y-3">
-                  <a href="mailto:nithin@ssh.net.in" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors">nithin@ssh.net.in</a>
-                  <a href="https://github.com/Nithin0620" target="_blank" rel="noreferrer" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors">github.com/Nithin0620</a>
-                  <a href="https://www.linkedin.com/in/k-s-nithin/" target="_blank" rel="noreferrer" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors">linkedin.com/in/k-s-nithin</a>
+                  <a href="mailto:nithin@ssh.net.in" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors cursor-pointer">nithin@ssh.net.in</a>
+                  <a href="https://github.com/Nithin0620" target="_blank" rel="noreferrer" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors cursor-pointer">github.com/Nithin0620</a>
+                  <a href="https://www.linkedin.com/in/k-s-nithin/" target="_blank" rel="noreferrer" className="font-mono text-[14px] text-white/70 hover:text-neon transition-colors cursor-pointer">linkedin.com/in/k-s-nithin</a>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function About() {
           </h2>
           <Link
             to="/start"
-            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold"
+            className="inline-flex rounded-[16px] px-10 py-5 font-grotesk text-[16px] uppercase tracking-wider bg-neon text-black hover:bg-white transition-colors duration-200 font-semibold cursor-pointer"
           >
             Start a Project →
           </Link>
