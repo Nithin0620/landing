@@ -102,6 +102,39 @@ const hostedDomains = [
       statusColor: 'bg-emerald-400',
       description: 'OpenAI-compatible LLM gateway with intelligent semantic caching, safety validation, and response reuse to reduce redundant API calls, latency, and LLM costs while maintaining reliable and fresh responses.',
       badge: 'LLM Security'
+    },
+    {
+      id: 'web2mcp',
+      title: 'Web2MCP',
+      category: 'Agent Tooling & Protocol Gateway',
+      subdomain: 'web2mcp.ssh.net.in',
+      url: 'https://web2mcp.ssh.net.in',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Convert human-facing websites, booking portals, and registries into live, verified Model Context Protocol (MCP) tools for AI agents.',
+      badge: 'Agent Protocol'
+    },
+    {
+      id: 'pulse',
+      title: 'PULSE',
+      category: 'Healthcare & Medication Management',
+      subdomain: 'pulse.ssh.net.in',
+      url: 'https://pulse.ssh.net.in',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Multilingual family-first medication tracker and health management platform designed for elderly care with AI assistance in 9 Indian languages.',
+      badge: 'Healthcare AI'
+    },
+    {
+      id: 'issuepilot',
+      title: 'IssuePilot',
+      category: 'AI Issue Triage & GitHub Automation',
+      subdomain: 'issuepilot.ssh.net.in',
+      url: 'https://issuepilot.ssh.net.in',
+      status: 'Online',
+      statusColor: 'bg-emerald-400',
+      description: 'Structured AI GitHub issue triage platform automating classification, severity scoring, and escalation gates with calibrated confidence and webhook label sync.',
+      badge: 'DevOps & AI'
     }
   ];
 
