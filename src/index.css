@@ -35,12 +35,64 @@
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: none;
   }
 }
 
 .animate-slideUpFade {
-  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.arch-edge {
+  stroke-dasharray: 5 7;
+  animation: dashFlow 1.1s linear infinite;
+}
+
+@keyframes tileScan {
+  0% {
+    top: -30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 120%;
+    opacity: 0;
+  }
+}
+
+.tile-scan {
+  top: -30%;
+  animation: tileScan 6s linear infinite;
+  will-change: top, opacity;
+}
+
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-edge,
+  .tile-scan,
+  .animate-slideUpFade {
+    animation: none;
+  }
 }
 
 /* Force hardware accelerated zero-jank scrolling */

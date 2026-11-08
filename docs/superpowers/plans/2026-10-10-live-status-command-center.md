@@ -62,7 +62,7 @@ Implement `scripts/hermes_status_daemon.py` with:
 - RAM and Battery percentage calculations
 - Active Git repo/branch detection
 - `playerctl` media detection
-- Periodic push loop with configurable interval (default: 30s)
+- Periodic push loop with configurable interval (default: 5 min, to stay within Cloudflare KV free-tier write limits)
 
 - [ ] **Step 3: Test daemon locally**
 Run `python3 scripts/hermes_status_daemon.py --dry-run` to verify payload structure.

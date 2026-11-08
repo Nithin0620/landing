@@ -82,7 +82,7 @@ flowchart TD
   * **Hermes Agent State**: Reads from local Hermes task output or log file.
   * **Workspace Context**: Checks current active git repository & branch.
   * **Media Detection**: Runs `playerctl metadata` to get current playing song (if any).
-  * **Push Cycle**: Sends payload every 30–60 seconds to Cloudflare Worker. Zero LLM calls involved.
+  * **Push Cycle**: Sends a payload every 5 minutes to Cloudflare Worker (1,000 KV writes/day free-tier limit; a 30s interval would use 2,880). Zero LLM calls involved.
 
 ---
 

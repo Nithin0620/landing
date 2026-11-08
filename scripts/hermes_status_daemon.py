@@ -182,7 +182,13 @@ def main():
     load_dotenv()
     parser = argparse.ArgumentParser(description="Hermes Live Status & Telemetry Daemon")
     parser.add_argument("--dry-run", action="store_true", help="Print telemetry without sending")
-    parser.add_argument("--interval", type=int, default=30, help="Push interval in seconds (default: 30)")
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=100,
+        help="Push interval in seconds (default: 100). Keep this above 90s: "
+        "Cloudflare KV's free tier allows 1,000 writes/day and a 30s interval uses 2,880.",
+    )
     parser.add_argument("--task", type=str, default=None, help="Override current task description")
     parser.add_argument("--category", type=str, default=None, help="Override category (e.g., Frontend, AI, Research)")
     parser.add_argument("--endpoint", type=str, default=os.environ.get("CLOUDFLARE_WORKER_URL", DEFAULT_ENDPOINT), help="Cloudflare Worker endpoint URL")

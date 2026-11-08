@@ -2,141 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRightIcon, MailIcon, GithubIcon, LinkedInIcon } from '../components/Icons';
 import LiveCommandCenter from '../components/LiveCommandCenter';
+import LiveSystemsBento from '../components/LiveSystemsBento';
+import { hostedDomains } from '../data/hostedDomains';
 
-const hostedDomains = [
-    {
-      id: 'personal',
-      title: 'Nithin Personal',
-      category: 'Profile & Portfolio',
-      subdomain: 'nithin.ssh.net.in',
-      url: 'https://nithin.ssh.net.in',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Personal portfolio, engineering background, career logs, and featured technical writings.',
-      badge: 'Primary Node'
-    },
-    {
-      id: 'bloggr',
-      title: 'Bloggr',
-      category: 'Publishing & Content Platform',
-      subdomain: 'bloggr.ssh.net.in',
-      url: 'https://bloggr.ssh.net.in',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Modern developer publishing platform with markdown rendering, edge distribution, rich reading experience, and custom domain routing.',
-      badge: 'Web Platform'
-    },
-    {
-      id: 'infra-xray',
-      title: 'Infra X-Ray',
-      category: 'Civic Tech & Public Accountability',
-      subdomain: 'infra-xray.ssh.net.in',
-      url: 'https://infra-xray.ssh.net.in',
-      status: 'Active',
-      statusColor: 'bg-emerald-400',
-      description: 'Public infrastructure review, government project auditing, and anti-corruption transparency platform.',
-      badge: 'Civic Platform'
-    },
-    {
-      id: 'satellite-super-resolution',
-      title: 'Satellite Super-Resolution',
-      category: 'Deep Learning & Earth Observation',
-      subdomain: 'windows.ssh.net.in',
-      url: 'https://windows.ssh.net.in/',
-      status: 'Live Demo',
-      statusColor: 'bg-emerald-400',
-      description: 'AI-powered satellite image super-resolution reconstructing 10–20 m imagery to <4 m spatial resolution for fine-scale Earth observation and localized monitoring.',
-      badge: 'Interactive AI'
-    },
-    {
-      id: 'studynotion',
-      title: 'StudyNotion',
-      category: 'EdTech & E-Learning Platform',
-      subdomain: 'studynotion.ssh.net.in',
-      url: 'https://studynotion.ssh.net.in',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Comprehensive EdTech platform featuring interactive course management, student & instructor dashboards, video streaming, and secure payments.',
-      badge: 'EdTech Platform'
-    },
-    {
-      id: 'workflow',
-      title: 'Workflow',
-      category: 'Project Management',
-      subdomain: 'workflow.ssh.net.in',
-      url: 'https://workflow.ssh.net.in',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Real-time engineering & project management platform for speed, clarity, and collaboration — Linear-speed UX, Jira issue tracking, multi-tenant workspaces, Kanban boards, RBAC, and analytics.',
-      badge: 'Project Mgmt'
-    },
-    {
-      id: 'benchley',
-      title: 'Benchley',
-      category: 'Load Testing & Benchmarking Platform',
-      subdomain: 'benchley.ssh.net.in',
-      url: 'https://benchley.ssh.net.in/',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Developer-centric HTTP & API load testing platform powered by Grafana k6 with real-time SSE telemetry streams, automated capacity diagnostics, and side-by-side run comparisons.',
-      badge: 'Load Testing'
-    },
-    {
-      id: 'keyzen',
-      title: 'Keyzen',
-      category: 'Secret Management & Credential Vault',
-      subdomain: 'keyzen.ssh.net.in',
-      url: 'https://keyzen.ssh.net.in/',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Secure secret management and credential vault for developers, with encryption, access control, and audit trails.',
-      badge: 'Secret Management'
-    },
-    {
-      id: 'memolm',
-      title: 'MemoLM',
-      category: 'LLM Response Firewall & Semantic Cache Gateway',
-      subdomain: 'memolm.ssh.net.in',
-      url: 'https://memolm.ssh.net.in/',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'OpenAI-compatible LLM gateway with intelligent semantic caching, safety validation, and response reuse to reduce redundant API calls, latency, and LLM costs while maintaining reliable and fresh responses.',
-      badge: 'LLM Security'
-    },
-    {
-      id: 'web2mcp',
-      title: 'Web2MCP',
-      category: 'Agent Tooling & Protocol Gateway',
-      subdomain: 'web2mcp.ssh.net.in',
-      url: 'https://web2mcp.ssh.net.in',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Convert human-facing websites, booking portals, and registries into live, verified Model Context Protocol (MCP) tools for AI agents.',
-      badge: 'Agent Protocol'
-    },
-    {
-      id: 'pulse',
-      title: 'PULSE',
-      category: 'Healthcare & Medication Management',
-      subdomain: 'pulse.ssh.net.in',
-      url: 'https://pulse.ssh.net.in',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Multilingual family-first medication tracker and health management platform designed for elderly care with AI assistance in 9 Indian languages.',
-      badge: 'Healthcare AI'
-    },
-    {
-      id: 'issuepilot',
-      title: 'IssuePilot',
-      category: 'AI Issue Triage & Policy Engine',
-      subdomain: 'issuepilot.ssh.net.in',
-      url: 'https://issuepilot.ssh.net.in/',
-      status: 'Online',
-      statusColor: 'bg-emerald-400',
-      description: 'Autonomous GitHub issue triage system with calibrated safety gates, 2-way label sync, split-pane human review inbox, and Jev 1.13 structured decision models.',
-      badge: 'AI Triage Engine'
-    }
-  ];
 
   const projects = [
     {
@@ -283,7 +151,7 @@ export default function Home() {
         <LiveCommandCenter />
       </section>
 
-      {/* HOSTED DOMAINS */}
+      {/* LIVE SYSTEMS BENTO */}
       <section id="domains" className="relative w-full py-24 sm:py-32 lg:py-36">
         <div className="w-full max-w-[1831px] mx-auto px-6 sm:px-10 lg:px-16 relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-18">
@@ -293,99 +161,16 @@ export default function Home() {
                 <span>Subdomain Network</span>
               </div>
               <h2 className="font-grotesk text-[36px] sm:text-[48px] md:text-[58px] lg:text-[68px] uppercase leading-tight text-white text-glow">
-                Hosted Domains
+                Live Systems
               </h2>
             </div>
 
             <div className="font-mono text-[13px] sm:text-[15px] uppercase text-white max-w-[360px] leading-relaxed font-medium">
-              Access active production subdomains and deployed portals on the network.
+              Click any tile for a live preview, architecture map, and the engineering behind it.
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
-            {/* Card row layout: even count = 2 cards per row (col-span-3). Odd count = 2 cards per row until the last row, which gets 3 cards (col-span-2) to fill it out. */}
-            {hostedDomains.map((srv, index) => {
-              const total = hostedDomains.length;
-              let spanClass = 'md:col-span-3';
-              if (total === 1) {
-                spanClass = 'md:col-span-6';
-              } else if (total % 2 !== 0) {
-                const splitPoint = total - 3;
-                spanClass = index < splitPoint ? 'md:col-span-3' : 'md:col-span-2';
-              }
-
-              return (
-                <div
-                  key={srv.id}
-                  className={`liquid-glass rounded-[32px] p-8 sm:p-10 flex flex-col justify-between hover:border-white/40 hover:bg-[#010828]/85 transition-colors duration-200 group min-h-[300px] ${spanClass}`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between pb-6 border-b border-white/20">
-                      <a
-                        href={srv.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-neon text-glow-neon font-bold tracking-wider inline-flex items-center space-x-1.5 hover:bg-neon hover:text-[#010828] hover:border-neon hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group/btn"
-                        title={`Visit ${srv.subdomain}`}
-                      >
-                        <span>{srv.subdomain}</span>
-                        <svg className="w-3 h-3 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                      <a
-                        href={srv.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 hover:bg-emerald-500/30 transition-colors duration-200 cursor-pointer"
-                        title={`Status: ${srv.status}`}
-                      >
-                        <span className={`w-2 h-2 rounded-full ${srv.statusColor} animate-pulse`} />
-                        <span className="font-mono text-[11px] text-emerald-300 uppercase tracking-wider font-bold">{srv.status}</span>
-                      </a>
-                    </div>
-
-                    <div className="pt-7">
-                      <a
-                        href={srv.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-xs uppercase tracking-widest text-neon text-glow-neon block mb-2 font-bold hover:underline"
-                      >
-                        {srv.category}
-                      </a>
-                      <a
-                        href={srv.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-grotesk text-[28px] sm:text-[34px] uppercase text-white text-glow group-hover:text-neon transition-colors duration-200 inline-block"
-                      >
-                        {srv.title}
-                      </a>
-                      <p className="font-mono text-[14px] sm:text-[15px] text-white/95 mt-3.5 leading-relaxed font-normal">
-                        {srv.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-8 mt-6 border-t border-white/20 flex items-center justify-between">
-                    <span className="font-mono text-xs uppercase text-white/80 tracking-wider font-semibold">
-                      {srv.badge}
-                    </span>
-                    <a
-                      href={srv.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-[50px] h-[50px] rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 text-white cursor-pointer"
-                      aria-label={`Open ${srv.title}`}
-                    >
-                      <ChevronRightIcon className="w-5 h-5 stroke-[2.5]" />
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <LiveSystemsBento domains={hostedDomains} />
         </div>
       </section>
 
