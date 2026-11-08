@@ -57,9 +57,11 @@ export async function sendWave() {
     return { success: true, waves_count: FALLBACK_STATUS.waves_count + 1 };
   }
   try {
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
     const res = await fetch(`${API_BASE_URL.replace(/\/$/, '')}/api/wave`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ origin, site: typeof window !== 'undefined' ? window.location.hostname : '' }),
     });
     return await res.json();
   } catch (err) {
@@ -71,9 +73,16 @@ export async function sendWave() {
 export async function trackVisit() {
   if (!API_BASE_URL) return { success: true, notified: false };
   try {
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
     const res = await fetch(`${API_BASE_URL.replace(/\/$/, '')}/api/visit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        origin,
+        site: typeof window !== 'undefined' ? window.location.hostname : '',
+        path: pathname,
+      }),
     });
     if (res.ok) {
       return await res.json();

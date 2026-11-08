@@ -126,6 +126,26 @@ export default {
         });
       }
 
+      // Helper to detect origin/site
+      const getSiteSource = async (req) => {
+        let body = {};
+        try {
+          body = await req.clone().json();
+        } catch {}
+        const originHeader = req.headers.get('Origin') || req.headers.get('Referer') || '';
+        const site = body.site || body.origin || originHeader;
+        if (/nithin\.ssh\.net\.in/i.test(site)) return 'nithin.ssh.net.in';
+        if (/ssh\.net\.in/i.test(site)) return 'ssh.net.in';
+        if (site) {
+          try {
+            return new URL(site).hostname;
+          } catch {
+            return site.replace(/^https?:\/\//i, '').split('/')[0];
+          }
+        }
+        return 'ssh.net.in / nithin.ssh.net.in';
+      };
+
       // 3. POST /api/wave - Visitor clicked "Send Wave 👋"
       if (path === '/api/wave' && request.method === 'POST') {
         let count = 1;
@@ -137,11 +157,13 @@ export default {
 
         const clientIp = request.headers.get('CF-Connecting-IP') || 'Unknown IP';
         const clientCountry = request.headers.get('CF-IPCountry') || 'Unknown';
+        const sourceSite = await getSiteSource(request);
         
         ctx.waitUntil(
           sendTelegramNotification(
             env,
             `👋 <b>New Wave on Landing Page!</b>\n\n` +
+            `🌐 <b>Site:</b> <code>${sourceSite}</code>\n` +
             `📍 <b>Location:</b> ${clientCountry} (${clientIp})\n` +
             `🎉 <b>Total Waves:</b> ${count}\n` +
             `⏰ <b>Time:</b> ${new Date().toLocaleTimeString()}`
@@ -158,9 +180,10 @@ export default {
         const clientIp = request.headers.get('CF-Connecting-IP') || 'Unknown';
         const clientCountry = request.headers.get('CF-IPCountry') || 'Unknown';
         const userAgent = request.headers.get('User-Agent') || 'Unknown';
+        const sourceSite = await getSiteSource(request);
 
-        // Throttle visit alerts: max 1 notification every 10 minutes per IP
-        const throttleKey = `visit_throttle_${clientIp}`;
+        // Throttle visit alerts per IP and per site: 60s cooldown (prevent spam while still notifying on fresh site visits)
+        const throttleKey = `visit_throttle_${sourceSite}_${clientIp}`;
         let shouldNotify = true;
 
         if (env.STATUS_KV) {
@@ -168,8 +191,8 @@ export default {
           if (isThrottled) {
             shouldNotify = false;
           } else {
-            // Set 10-minute expiration for throttle
-            await env.STATUS_KV.put(throttleKey, '1', { expirationTtl: 600 });
+            // Set 60-second expiration for throttle (down from 10 minutes)
+            await env.STATUS_KV.put(throttleKey, '1', { expirationTtl: 60 });
           }
         }
 
@@ -178,15 +201,15 @@ export default {
             sendTelegramNotification(
               env,
               `👀 <b>New Visitor on Landing Page!</b>\n\n` +
+              `🌐 <b>Site:</b> <code>${sourceSite}</code>\n` +
               `📍 <b>Location:</b> ${clientCountry}\n` +
-              `🌐 <b>IP:</b> ${clientIp}\n` +
-              `💻 <b>Browser:</b> ${userAgent.substring(0, 100)}\n` +
+              `💻 <b>Device / Browser:</b> ${userAgent.substring(0, 100)}\n` +
               `⏰ <b>Time:</b> ${new Date().toLocaleTimeString()}`
             )
           );
         }
 
-        return new Response(JSON.stringify({ success: true, notified: shouldNotify, country: clientCountry }), {
+        return new Response(JSON.stringify({ success: true, notified: shouldNotify, site: sourceSite, country: clientCountry }), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
