@@ -56,6 +56,7 @@ function Preview({ project, showIframe, onLoadIframe, maximized, onToggleMaximiz
   const accent = project.accent || '#6FFF00';
   const viewportRef = useRef(null);
   const [scale, setScale] = useState(1);
+  const [imageFailed, setImageFailed] = useState(false);
 
   useEffect(() => {
     const el = viewportRef.current;
@@ -118,6 +119,17 @@ function Preview({ project, showIframe, onLoadIframe, maximized, onToggleMaximiz
           </span>
         </div>
 
+        {!imageFailed && (
+          <img
+            src={project.screenshot || `/screenshots/${project.id}.jpg`}
+            alt={`${project.title} screenshot`}
+            loading="lazy"
+            draggable={false}
+            onError={() => setImageFailed(true)}
+            className="absolute inset-0 h-full w-full object-cover object-top"
+          />
+        )}
+
         {showIframe ? (
           <iframe
             src={project.url}
@@ -152,34 +164,41 @@ function Preview({ project, showIframe, onLoadIframe, maximized, onToggleMaximiz
 }
 
 function Expandable({ open, onClose, maxWidth, scroll = false, children }) {
-  const [phase, setPhase] = useState('idle');
+  const [rendered, setRendered] = useState(open);
+  const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
     if (open) {
-      setPhase('entering');
-      const frame = requestAnimationFrame(() => setPhase('open'));
-      return () => cancelAnimationFrame(frame);
+      setRendered(true);
+      setLeaving(false);
+      return;
     }
 
-    setPhase((current) => (current === 'idle' ? 'idle' : 'leaving'));
-    const timer = setTimeout(() => setPhase('idle'), 220);
+    if (!rendered) return;
+    setLeaving(true);
+    const timer = setTimeout(() => {
+      setRendered(false);
+      setLeaving(false);
+    }, 220);
     return () => clearTimeout(timer);
-  }, [open]);
+  }, [open, rendered]);
 
-  const expanded = phase !== 'idle';
-  const visible = phase === 'open';
-  const transition = visible || phase === 'leaving';
+  const expanded = rendered;
 
   const wrapperClasses = expanded
-    ? `fixed inset-0 z-[110] flex items-center justify-center bg-[#010828]/95 p-3 backdrop-blur-md sm:p-6 ${
-        visible ? 'opacity-100' : 'opacity-0'
-      } ${transition ? 'transition-opacity duration-200' : 'transition-none'}`
+    ? `focus-overlay fixed inset-0 z-[110] flex items-center justify-center bg-[#010828]/95 p-3 backdrop-blur-md sm:p-6 ${
+        leaving
+          ? 'animate-[overlayOut_200ms_ease-in_forwards]'
+          : 'animate-[overlayIn_200ms_ease-out_forwards]'
+      }`
     : '';
 
   const innerClasses = expanded
-    ? `${scroll ? 'max-h-[88vh] overflow-y-auto' : ''} w-full ${
-        visible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-      } ${transition ? 'transition-all duration-200' : 'transition-none'}`
+    ? `focus-panel ${scroll ? 'max-h-[88vh] overflow-y-auto' : ''} w-full ${
+        leaving
+          ? 'animate-[panelOut_200ms_ease-in_forwards]'
+          : 'animate-[panelIn_200ms_ease-out_forwards]'
+      }`
     : '';
 
   return (

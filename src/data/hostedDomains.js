@@ -1,7 +1,7 @@
 export const hostedDomains = [
   {
     id: 'personal',
-    title: 'Nithin Personal',
+    title: 'Portfolio',
     category: 'Profile & Portfolio',
     subdomain: 'nithin.ssh.net.in',
     url: 'https://nithin.ssh.net.in',
@@ -1037,6 +1037,118 @@ export const hostedDomains = [
         { from: 'engine', to: 'gates' },
         { from: 'gates', to: 'github' },
         { from: 'engine', to: 'db' },
+      ],
+    },
+  },
+  {
+    id: 'splitwise',
+    title: 'SplitWise',
+    category: 'Fintech & Shared Expenses',
+    subdomain: 'splitwise.ssh.net.in',
+    url: 'https://splitwise.ssh.net.in',
+    status: 'Online',
+    statusColor: 'bg-emerald-400',
+    badge: 'Web + Mobile',
+    accent: '#34d399',
+    repo: 'https://github.com/Nithin0620/splitWise',
+    description:
+      'Full-stack shared-expense tracker for trips and groups with flexible splits, live balances, settlements, email invites, and native mobile apps.',
+    stack: ['React', 'Express', 'MongoDB', 'Tailwind CSS', 'Ably', 'Expo'],
+    architecture: {
+      layers: [
+        {
+          x: 95,
+          nodes: [
+            {
+              id: 'web',
+              label: 'Web App',
+              tech: 'React 19',
+              kind: 'client',
+              detail:
+                'Vite SPA with optimistic balance updates and route-level code splitting.',
+            },
+            {
+              id: 'mobile',
+              label: 'Mobile App',
+              tech: 'Expo',
+              kind: 'client',
+              detail:
+                'React Native client shares the same REST API and realtime channel as the web app.',
+            },
+          ],
+        },
+        {
+          x: 300,
+          nodes: [
+            {
+              id: 'edge',
+              label: 'Edge / Cloud Run',
+              tech: 'Cloudflare',
+              kind: 'edge',
+              detail:
+                'TLS, caching, and routing for the web app and the Cloud Run API.',
+            },
+          ],
+        },
+        {
+          x: 510,
+          nodes: [
+            {
+              id: 'api',
+              label: 'Express API',
+              tech: 'Express 4',
+              kind: 'service',
+              detail:
+                'REST API handles trips, expenses, split math, invites, and settlement flows.',
+            },
+            {
+              id: 'realtime',
+              label: 'Ably Realtime',
+              tech: 'Ably',
+              kind: 'service',
+              detail:
+                'Balance and expense changes fan out to every connected client without polling.',
+            },
+          ],
+        },
+        {
+          x: 715,
+          nodes: [
+            {
+              id: 'db',
+              label: 'MongoDB',
+              tech: 'MongoDB',
+              kind: 'data',
+              detail:
+                'Stores users, trips, expenses, and split shares with indexed lookups.',
+            },
+            {
+              id: 'auth',
+              label: 'Google OAuth',
+              tech: 'OAuth 2.0',
+              kind: 'external',
+              detail:
+                'Google sign-in issues JWTs that the API verifies on every request.',
+            },
+            {
+              id: 'mail',
+              label: 'Resend',
+              tech: 'Resend',
+              kind: 'external',
+              detail:
+                'Transactional email delivers trip invites and settlement reminders.',
+            },
+          ],
+        },
+      ],
+      edges: [
+        { from: 'web', to: 'edge' },
+        { from: 'mobile', to: 'edge' },
+        { from: 'edge', to: 'api' },
+        { from: 'api', to: 'db' },
+        { from: 'api', to: 'realtime' },
+        { from: 'api', to: 'auth' },
+        { from: 'api', to: 'mail' },
       ],
     },
   },

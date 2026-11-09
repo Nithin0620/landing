@@ -8,13 +8,30 @@ const SPANS = [
   'md:col-span-1',
   'md:col-span-1',
   'sm:col-span-2 md:col-span-2',
-  'md:col-span-1',
+  'sm:col-span-2 md:col-span-2',
   'md:col-span-1',
   'sm:col-span-2 md:col-span-2',
   'md:col-span-1',
-  'md:col-span-1',
   'sm:col-span-2 md:col-span-2',
   'sm:col-span-2 md:col-span-2',
+  'sm:col-span-2 md:col-span-2',
+  'sm:col-span-2 md:col-span-2',
+];
+
+const ORDER = [
+  'personal',
+  'workflow',
+  'infra-xray',
+  'satellite-super-resolution',
+  'studynotion',
+  'bloggr',
+  'benchley',
+  'web2mcp',
+  'memolm',
+  'keyzen',
+  'pulse',
+  'issuepilot',
+  'splitwise',
 ];
 
 function initials(title) {
@@ -26,8 +43,13 @@ function initials(title) {
     .toUpperCase();
 }
 
-function TilePreview({ project, large = false }) {
+function screenshotSrc(project) {
+  return project.screenshot || `/screenshots/${project.id}.jpg`;
+}
+
+function TilePreview({ project, large = false, showMeta = true }) {
   const accent = project.accent || '#6FFF00';
+  const [failed, setFailed] = useState(false);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -46,18 +68,37 @@ function TilePreview({ project, large = false }) {
         </span>
       </div>
 
+      {!failed && (
+        <img
+          src={screenshotSrc(project)}
+          alt={`${project.title} screenshot`}
+          loading="lazy"
+          draggable={false}
+          onError={() => setFailed(true)}
+          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
+
+      {showMeta && (
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#010828]/85 via-[#010828]/10 to-transparent" />
+      )}
+
       <div className="tile-scan pointer-events-none absolute inset-x-0 h-16 bg-gradient-to-b from-transparent via-white/5 to-transparent" />
 
-      <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/30 px-2 py-1 backdrop-blur-sm">
-        <span className={`h-1.5 w-1.5 rounded-full ${project.statusColor}`} />
-        <span className="font-mono text-[8px] uppercase tracking-wider text-white/70">
-          {project.status}
-        </span>
-      </div>
+      {showMeta && (
+        <>
+          <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/30 px-2 py-1 backdrop-blur-sm">
+            <span className={`h-1.5 w-1.5 rounded-full ${project.statusColor}`} />
+            <span className="font-mono text-[8px] uppercase tracking-wider text-white/70">
+              {project.status}
+            </span>
+          </div>
 
-      <div className="absolute inset-x-3 bottom-3 truncate rounded-md border border-white/10 bg-black/30 px-2 py-1 font-mono text-[9px] text-white/50 backdrop-blur-sm">
-        {project.subdomain}
-      </div>
+          <div className="absolute inset-x-3 bottom-3 truncate rounded-md border border-white/10 bg-black/30 px-2 py-1 font-mono text-[9px] text-white/50 backdrop-blur-sm">
+            {project.subdomain}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -81,10 +122,15 @@ function TileFooter({ project, onOpen }) {
 export default function LiveSystemsBento({ domains }) {
   const [selected, setSelected] = useState(null);
 
+  const orderedDomains = [
+    ...ORDER.map((id) => domains.find((project) => project.id === id)).filter(Boolean),
+    ...domains.filter((project) => !ORDER.includes(project.id)),
+  ];
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[230px] md:grid-cols-4">
-        {domains.map((project, index) => {
+        {orderedDomains.map((project, index) => {
           const span = SPANS[index] || 'md:col-span-1';
           const isHero = index === 0;
           const isWide = !isHero && span.includes('md:col-span-2');
@@ -194,27 +240,24 @@ export default function LiveSystemsBento({ domains }) {
               type="button"
               onClick={() => setSelected(project)}
               aria-label={`Open case study for ${project.title}`}
-              className={`${base} flex min-h-[190px] flex-col justify-between p-4 sm:p-5`}
+              className={`${base} flex min-h-[230px] flex-col`}
             >
-              <div className="flex items-start justify-between gap-2">
-                <span className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.18em] text-white/70">
+              <div className="relative min-h-[104px] flex-1 overflow-hidden border-b border-white/10">
+                <TilePreview project={project} showMeta={false} />
+                <span className="absolute left-2.5 top-2.5 rounded-full border border-white/15 bg-black/40 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-white/75 backdrop-blur-sm">
                   {project.category}
                 </span>
-                <span
-                  className="font-grotesk text-2xl uppercase leading-none transition-transform duration-300 group-hover:scale-110"
-                  style={{ color: `${accent}66` }}
-                >
-                  {initials(project.title)}
-                </span>
               </div>
-              <div>
-                <h3 className="font-grotesk text-[20px] uppercase leading-tight text-white transition-colors duration-200 group-hover:text-neon">
-                  {project.title}
-                </h3>
-                <p className="mt-1 truncate font-mono text-[9px] uppercase tracking-wider text-neon/80">
-                  {project.subdomain}
-                </p>
-                <div className="mt-3 flex items-center justify-between gap-2">
+              <div className="flex flex-col gap-2 p-3.5">
+                <div>
+                  <h3 className="font-grotesk text-[19px] uppercase leading-tight text-white transition-colors duration-200 group-hover:text-neon">
+                    {project.title}
+                  </h3>
+                  <p className="mt-0.5 truncate font-mono text-[9px] uppercase tracking-wider text-neon/80">
+                    {project.subdomain}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between gap-2">
                   <span className="flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-white/60">
                     <span
                       className={`h-1.5 w-1.5 rounded-full ${project.statusColor}`}
