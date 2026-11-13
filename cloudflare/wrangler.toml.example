@@ -4,12 +4,25 @@ compatibility_date = "2024-09-01"
 
 # Bind your KV Namespace
 # Run: wrangler kv:namespace create STATUS_KV
-# Then paste the returned id here:
 [[kv_namespaces]]
 binding = "STATUS_KV"
-id = "YOUR_KV_NAMESPACE_ID"
+id = "ac8e38d6a187408690a00b651cd84881"
+
+# Cloudflare D1 Database Binding for Visitor Tracking
+# Run: wrangler d1 create visits
+[[d1_databases]]
+binding = "DB"
+database_name = "visits"
+database_id = "353b3445-beb8-4beb-b779-f76e2017df7a"
+
+# Scheduled trigger for daily email report at 11:59 PM IST (18:29 UTC)
+[triggers]
+crons = ["29 18 * * *"]
 
 [vars]
-AUTH_SECRET = "your_secret_auth_token"
+AUTH_SECRET = "hermes_secret_landing_2026"
 TELEGRAM_BOT_TOKEN = "your_telegram_bot_token"
 TELEGRAM_CHAT_ID = "your_telegram_chat_id"
+RESEND_API_KEY = "your_resend_api_key"
+REPORT_FROM = "Landing & Portfolio <noreply@splitwise.ssh.net.in>"
+REPORT_TO = "nithin30302@gmail.com"

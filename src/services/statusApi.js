@@ -70,19 +70,16 @@ export async function sendWave() {
   }
 }
 
+import { collectVisitorPayload } from './visitorInfo';
+
 export async function trackVisit() {
   if (!API_BASE_URL) return { success: true, notified: false };
   try {
-    const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+    const payload = collectVisitorPayload();
     const res = await fetch(`${API_BASE_URL.replace(/\/$/, '')}/api/visit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        origin,
-        site: typeof window !== 'undefined' ? window.location.hostname : '',
-        path: pathname,
-      }),
+      body: JSON.stringify(payload),
     });
     if (res.ok) {
       return await res.json();
