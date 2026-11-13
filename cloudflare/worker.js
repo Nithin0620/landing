@@ -28,6 +28,29 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+// Helper to parse human-readable OS and Browser from User-Agent string
+function parseUserAgent(ua = '') {
+  let os = 'Unknown OS';
+  if (/windows phone/i.test(ua)) os = 'Windows Phone';
+  else if (/win(dows|98|nt|2000|xp|7|8|10|11)/i.test(ua)) os = 'Windows';
+  else if (/android/i.test(ua)) os = 'Android';
+  else if (/iphone|ipad|ipod/i.test(ua)) os = 'iOS';
+  else if (/macintosh|mac os x/i.test(ua)) os = 'macOS';
+  else if (/cros/i.test(ua)) os = 'Chrome OS';
+  else if (/linux/i.test(ua)) os = 'Linux';
+
+  let browser = 'Unknown Browser';
+  if (/edg\//i.test(ua)) browser = 'Edge';
+  else if (/opr\/|opera/i.test(ua)) browser = 'Opera';
+  else if (/chrome|crios/i.test(ua)) browser = 'Chrome';
+  else if (/firefox|fxios/i.test(ua)) browser = 'Firefox';
+  else if (/safari/i.test(ua)) browser = 'Safari';
+  else if (/curl/i.test(ua)) browser = 'cURL';
+  else if (/bot|crawler|spider/i.test(ua)) browser = 'Bot';
+
+  return { os, browser, summary: `${os} &bull; ${browser}` };
+}
+
 // Convert UTC date to formatted IST string (Asia/Kolkata)
 function getISTDateString(date = new Date()) {
   try {
@@ -553,6 +576,8 @@ export default {
           }
 
           const visitType = visitCount > 1 ? `Returning visitor (Visit #${visitCount})` : 'New visitor';
+          const uaParsed = parseUserAgent(userAgent);
+          const platformStr = device.platform ? ` (${device.platform})` : '';
 
           const msg = 
             `👀 <b>Visitor on ${escapeHtml(sourceSite)}!</b>\n\n` +
@@ -560,7 +585,8 @@ export default {
             `📍 <b>Location:</b> ${escapeHtml(clientCity)}, ${escapeHtml(clientCountry)} (<code>${escapeHtml(clientIp)}</code>)\n` +
             `🏢 <b>ISP / ASN:</b> ${escapeHtml(clientIsp || 'Unknown')} (${escapeHtml(clientAsn)})\n` +
             `🏷️ <b>Status:</b> ${escapeHtml(visitType)}\n` +
-            `💻 <b>Device / Screen:</b> ${escapeHtml(screenRes || 'Standard')}${device.cores ? ` | ${device.cores} cores` : ''}${device.memory ? ` | ${device.memory}GB RAM` : ''}\n` +
+            `💻 <b>OS & Browser:</b> <b>${uaParsed.os}</b> &bull; <b>${uaParsed.browser}</b>${escapeHtml(platformStr)}\n` +
+            `🖥️ <b>Hardware / Screen:</b> ${escapeHtml(screenRes || 'Standard')}${device.cores ? ` | ${device.cores} cores` : ''}${device.memory ? ` | ${device.memory}GB RAM` : ''}\n` +
             `🔗 <b>Referrer:</b> ${escapeHtml(referrer || 'Direct')}` +
             utmNote +
             identityNote +
